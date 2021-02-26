@@ -18,18 +18,38 @@
 
    // Some and Every Checks
    // Array.prototype.some() // is at least one person 19 or older?
-   const adult = randomPeople.some((person)=> {
-     const currentYear = (new Date()).getFullYear(); // 2021
-     return currentYear - person.year?1: -1;
+   const adult = randomPeople.some(person=> {
+    const currentYear = (new Date()).getFullYear(); // 2021
+    return currentYear - person.year >= 19 ?1: -1;
+  })
+    log(adult);
 
-   })
-     log(adult);
+  // more concise
+   /*const adult = randomPeople.some(person=> 
+  (new Date()).getFullYear() - person.year>= 19)
+  log(adult); // returns true
+  */
+
    // Array.prototype.every() // is everyone 19 or older?
-
+   const allAdult = randomPeople.every(person=> 
+    (new Date()).getFullYear() - person.year >= 19)
+    log(allAdult); 
    // Array.prototype.find()
    // Find is like filter, but instead returns just the one you are looking for
    // find the comment with the ID of 823423
+   const comment = comments.find(comment=> comment.id === 823423);
+   log(comment); 
 
    // Array.prototype.findIndex()
    // Find the comment with this ID
+   const findI = comments.findIndex(comment=> comment.id===823423)
+   log(findI);
+   
    // delete the comment with the ID of 823423
+  // delete comments[1]; this works but
+  const newComments = [
+      comments.slice(0, findI),
+      comments.slice(findI + 1),
+  ];
+   console.table(comments);
+   console.table(newComments);
