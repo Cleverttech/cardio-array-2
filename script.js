@@ -19,10 +19,11 @@
    // Some and Every Checks
    // Array.prototype.some() // is at least one person 19 or older?
    const adult = randomPeople.some((person)=> {
-     const currentYear = (new Date()).getFullYear();
-     log(currentYear);
+     const currentYear = (new Date()).getFullYear(); // 2021
+     return currentYear - person.year?1: -1;
 
    })
+     log(adult);
    // Array.prototype.every() // is everyone 19 or older?
 
    // Array.prototype.find()
